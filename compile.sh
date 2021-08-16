@@ -2,7 +2,7 @@
 
 SYSTEMS=( windows linux freebsd )
 
-ARCHS=( 386 amd64 amd64p32 arm arm64 ppc ppc64 )
+ARCHS=( 386 amd64 amd64p32 arm arm64 )
 
 function usage() {
 	echo "Usage: ${0##*/} [ -h|--help ] [ --target <system> ] [ -a|--arch <arch> ] [ -p|--package ]"
