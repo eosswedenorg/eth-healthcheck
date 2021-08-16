@@ -34,3 +34,30 @@ jobs:
           asset_name: ${{ steps.package.outputs.name }}
           asset_path: ${{ steps.package.outputs.filename }}
           asset_content_type: application/x-deb
+  cross-compile:
+    strategy:
+      matrix:
+        os: [ linux, freebsd ]
+        arch: [ 386, amd64, arm, arm64 ]
+    name: ${{matrix.os}}-${{matrix.arch}}
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: compile
+        id: compile
+        run: |
+          ./compile.sh --target ${{matrix.os}} -a ${{matrix.arch}}
+          FILE=$(find build -type f | head -1)
+          echo "::set-output name=filename::$FILE"
+          echo "::set-output name=name::$(basename $FILE)"
+
+      - name: Upload
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_name: ${{ steps.compile.outputs.name }}-${{matrix.os}}-${{matrix.arch}}
+          asset_path: ${{ steps.compile.outputs.filename }}
+          asset_content_type: application/octet-stream
