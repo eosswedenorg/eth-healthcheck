@@ -8,7 +8,7 @@ import (
 	"github.com/pborman/getopt/v2"
 	"github.com/onrik/ethrpc"
 	"github.com/eosswedenorg-go/haproxy"
-	"internal/tcp_server"
+	"github.com/eosswedenorg-go/tcp_server"
 )
 
 var logger log.Logger
