@@ -9,9 +9,8 @@ require (
 	github.com/mattn/go-isatty v0.0.13
 	github.com/onrik/ethrpc v1.0.0
 	github.com/pborman/getopt/v2 v2.1.0
-	internal/haproxy v1.0.0
+    github.com/eosswedenorg-go/haproxy v0.0.0-20220101140534-fccfdd93a8cd
 	internal/tcp_server v1.0.0
 )
 
-replace internal/haproxy => ./src/haproxy
 replace internal/tcp_server => ./src/tcp_server

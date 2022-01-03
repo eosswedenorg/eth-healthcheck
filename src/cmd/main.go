@@ -7,7 +7,7 @@ import (
 	log "github.com/inconshreveable/log15"
 	"github.com/pborman/getopt/v2"
 	"github.com/onrik/ethrpc"
-	"internal/haproxy"
+	"github.com/eosswedenorg-go/haproxy"
 	"internal/tcp_server"
 )
 
