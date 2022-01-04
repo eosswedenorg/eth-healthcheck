@@ -72,6 +72,7 @@ func main() {
     var printVersion bool;
     var printUsage bool;
 
+    getopt.SetParameters("[ip] [port]")
     getopt.FlagLong(&printUsage, "help", 'h', "Print this help text")
     getopt.FlagLong(&printVersion, "version", 'v', "Print version")
 
