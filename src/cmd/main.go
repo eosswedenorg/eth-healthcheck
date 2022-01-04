@@ -69,9 +69,25 @@ func argv_listen_addr() string {
 
 func main() {
 
-	logger = log.New()
+    var printVersion bool;
+    var printUsage bool;
+
+    getopt.FlagLong(&printUsage, "help", 'h', "Print this help text")
+    getopt.FlagLong(&printVersion, "version", 'v', "Print version")
 
 	getopt.Parse()
+
+    if printUsage {
+        getopt.Usage()
+        return
+    }
+
+    if printVersion {
+        print("Version: v0.1.0\n")
+        return
+    }
+
+    logger = log.New()
 
 	addr := argv_listen_addr()
 	server := tcp_server.New(argv_listen_addr())
